@@ -53,8 +53,8 @@ extension Web3.BrowserFunctions {
 
     public func personalECRecover(_ personalMessage: Data, signature: Data) -> String? {
         if signature.count != 65 { return nil }
-        let rData = Array(signature.prefix(32))
-        let sData = Array(signature.dropFirst(32).prefix(32))
+        let rData = Array(Data(signature.prefix(32)))
+        let sData = Array(Data(signature.dropFirst(32).prefix(32)))
         var vData = signature[64]
         if vData >= 27 && vData <= 30 {
             vData -= 27
