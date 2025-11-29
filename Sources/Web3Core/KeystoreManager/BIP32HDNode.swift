@@ -287,7 +287,7 @@ extension HDNode {
 
     public func serializeToString(serializePublic: Bool = true, version: HDversion = HDversion()) -> String? {
         guard let data = self.serialize(serializePublic: serializePublic, version: version) else { return nil }
-        return Base58.base58FromBytes(data.bytes)
+        return Base58.base58FromBytes(Array(data))
     }
 
     public func serialize(serializePublic: Bool = true, version: HDversion = HDversion()) -> Data? {

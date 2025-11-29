@@ -54,7 +54,7 @@ public struct RLP {
     }
 
     internal static func encode(_ data: Data) -> Data? {
-        if data.count == 1 && data.bytes[0] < UInt8(0x80) {
+        if data.count == 1 && data[data.startIndex] < UInt8(0x80) {
             return data
         } else {
             guard let length = encodeLength(data.count, offset: UInt8(0x80)) else { return nil }
